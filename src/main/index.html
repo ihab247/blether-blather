@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Blether Blather</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="language-container">
+      <div id="original-container">
+        <h class="section-title">Original Text</h>
+        <button id="import-button" onclick="onImportButtonPressed()">🚚Import</button>
+        <button id="create-button" onclick="onCreateButtonPressed()">🔨Create New</button>
+        <button id="save-button" onclick="onSaveButtonPressed()">💾Save</button>
+        <p id="text-language" class="text-container" spellcheck="false" contenteditable="true"></p></div>
+      <div id="manual-translation-container">
+        <h class="section-title">Manual Translation Text</h>
+        <p id="manual-language" class="text-container" spellcheck="false" contenteditable="true"></p>
+      </div>
+    </div>
+    <div id="notes-container">
+      <h class="section-title">Notes</h>
+      <button id="flash-button" onclick="onFlashButtonPressed()">⚡Flash</button>
+      <!-- <button id="flash-sort-button">Sort (WIP)</button> -->
+      <div id="notes-list"></div>
+    </div>
+  </body>
+</html>

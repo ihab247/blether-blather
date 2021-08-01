@@ -1,0 +1,110 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#language-container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem;
+  float: left;
+  width: 60%;
+  outline: 1px solid grey;
+  height: 95vh;
+}
+
+#original-container, #manual-translation-container{
+  height: 50%;
+}
+
+#original-container p, #manual-translation-container p{
+  height: 90%;
+  overflow-y: scroll;
+}
+
+#notes-container {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 1rem;
+  float: right;
+  width: 40%;
+  outline: 1px solid grey;
+  height: 95vh;
+}
+
+.section-title {
+  font-weight: bold;
+}
+
+.single-note {
+  outline: 1px solid grey;
+  margin: 1em;
+  padding: 0.3rem;
+}
+
+.word-type {
+  color: darkgray;
+  font-weight: bold;
+  float: right;
+}
+
+.word {
+  font-weight: bold;
+  float: left;
+}
+
+.definition {
+  clear: both;
+  max-height: 8rem;
+  overflow-y: scroll;
+}
+
+.definition::-webkit-scrollbar, #manual-translation-container p::-webkit-scrollbar, #language-container p::-webkit-scrollbar{
+  display: none;
+}
+
+.text-container {
+  font-size: larger;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+#flash-word-queue {
+  text-align: center;
+}
+
+#flash-body {
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+}
+
+#flash-word-def {
+  text-align: center;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+button {
+  border: none;
+  padding: 5px;
+  margin: 0.2rem;
+}
+
+@keyframes buttonFade {
+  to {
+    background-color: rgb(48, 48, 48);
+    color: white;
+  }
+}
+
+button:hover {
+  animation-name: buttonFade;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
