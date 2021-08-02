@@ -43,6 +43,11 @@ body {
   padding: 0.3rem;
 }
 
+.single-note button {
+  margin: 0;
+  padding: 0;
+}
+
 .word-type {
   color: darkgray;
   font-weight: bold;
@@ -58,6 +63,7 @@ body {
   clear: both;
   max-height: 8rem;
   overflow-y: scroll;
+  cursor: default;
 }
 
 .definition::-webkit-scrollbar, #manual-translation-container p::-webkit-scrollbar, #language-container p::-webkit-scrollbar{
