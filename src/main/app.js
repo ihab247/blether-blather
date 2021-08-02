@@ -173,8 +173,3 @@ document.onkeydown = function (e) {
     }
 }
 
-function defosdfjioljasdhfo(e) {
-    // asdojfhlasjdikfh
-}
-
-
