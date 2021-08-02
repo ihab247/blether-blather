@@ -107,6 +107,11 @@ ipcMain.on("update-note", (event, arg) => {
   WORD_NOTES.get(arg.word).translation = arg.translation;
 });
 
+ipcMain.on("change-flash-card-position", (event, arg) => {
+
+});
+
+
 // config
 ipcMain.on("get-config-file", (event, arg) => {
   let path = dialog.showOpenDialogSync(

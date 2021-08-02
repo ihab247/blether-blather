@@ -23,10 +23,10 @@ function resetNotes() {
 
 function addHTMLNote(word = "Insert", type = "Text", definition = "No Definition Set😪") {
     notesList.insertAdjacentHTML("beforeend",
-        `<div draggable="true" ondragenter="onDragOver(event)" ondragend="onDragDrop(event)" class="single-note">
+        `<div draggable="true" class="single-note">
             <h class="word">${word}</h>
             <!-- <h class="word-type" contenteditable="true">${type}</h> -->
-            <button class="remove-button" hidden="true" style="float: right">💥</button>
+            <button class="remove-button" hidden="true" style="float: right">🧨</button>
             <p class="definition" spellcheck="false" contenteditable="true">${definition}</p>
         </div>`
     );
@@ -64,7 +64,6 @@ function addHTMLNote(word = "Insert", type = "Text", definition = "No Definition
     note.addEventListener("mouseout", function (e) {
         this.getElementsByClassName("remove-button").item(0).hidden = true;
     })
-
 }
 
 function createNewNoteServer(note) {
@@ -117,22 +116,6 @@ function saveToFile() {
 }
 
 // EVENT FUNCTIONS
-
-function onDragOver(e) {
-    for (var element of notesList.getElementsByClassName("drag-element"))  {
-        element.remove();
-    }
-    console.log(e);
-    e.target.closest(".single-note").insertAdjacentHTML("afterend",
-     `<div class="drag-element"><hr><br><br><br></div>`
-    );
-}
-
-function onDragDrop(e) {
-    for (var element of notesList.getElementsByClassName("drag-element"))  {
-        element.remove();
-    }
-}
 
 function onCreateNewNote() {
     let selected = document.getSelection().toString();
@@ -188,3 +171,39 @@ document.onkeydown = function (e) {
         return onCreateNewNote();
     }
 }
+
+let dragged;
+let dragover;
+
+document.addEventListener("dragstart", function (e) {
+    dragged = e.target;
+    e.target.style.opacity = .5;
+})
+
+document.addEventListener("dragenter", function (e) {
+    for (var element of notesList.getElementsByClassName("drag-element")) {
+        element.remove();
+    }
+
+    if (e.target.closest(".single-note") == null) {
+        return false;
+    }
+
+    dragover = e.target.closest(".single-note");
+
+    dragover.insertAdjacentHTML("afterend",
+        `<div class="drag-element"><hr><br><br></div>`
+    );
+})
+
+document.addEventListener("dragend", function (e) {
+    for (var element of notesList.getElementsByClassName("drag-element")) {
+        element.remove();
+    }
+    dragged.style.opacity = 1;
+    dragover.after(dragged);
+    ipcRenderer.send("change-flash-card-position", {
+        moved: "",
+        after: ""
+    });
+})
